@@ -7,9 +7,6 @@ import { useState, useEffect } from 'react';
 import { User, Upload, Mail, Phone, Book, Code, Briefcase} from 'lucide-react';
 // import { Card, CardHeader, CardContent} from '@/components/ui/card';
 
-
-function App() 
-{
   const ProfileCreation = () =>
   {
     const [profile, setProfile] = useState(
@@ -37,7 +34,7 @@ function App()
       });
 
       //Able to edit the form.
-      // const [isEditing, setIsEditing] = useState(true);
+      const [isEditing, setIsEditing] = useState(true);
 
       //handling the personal information taken from the input field
       const handlePersonalInfoChange = (e) =>
@@ -244,6 +241,5 @@ function App()
   //     </p>
   //   </>
   // )
-};
 
-export default App;
+export default ProfileCreation;
