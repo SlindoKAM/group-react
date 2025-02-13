@@ -1,15 +1,136 @@
-/*Main Layout */
+/* Main Layout */
+/* body{
+  background: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+} */
 .profile-container{
   max-width: 80rem;
   margin: 0 auto;
-  padding: 2rem;
-  background:  red;
+  padding: 1.25rem;
+  background:  #F5F5F5;
+  min-height: 100vh;
+}
+
+.profile-title{
+  text-align: center;
+  margin-bottom: 1.875rem;
+  font-size: 1.5rem;
+  color: #111111;
 }
 
 .profile-form{
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
+}
+/* Card Styles */
+.card{
+  background: #FFFFFF;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 1);
+  overflow: hidden;
+  padding: 0.938rem;
+}
+
+.card-header{
+  padding: 0.938rem 1.25rem;
+  border-bottom: 0.063rem solid #EEEEEE;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  background: #F8F9FA;
+  border-radius: 1rem;
+}
+
+.card-header h2{
+  margin: 0;
+  font-size: 1.25rem;
+  color: #111111;
+}
+
+.card-content{
+  padding: 1.25rem;
+}
+
+/* Form Elements */
+.personal-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
+  gap: 0.938rem;
+  margin-bottom: 0.938rem;
+}
+
+.input-field{
+  margin-bottom: 0.938rem;
+}
+
+.form-input{
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 0.063rem solid #DDDDDD;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  transition: border-color 0.6s, box-shadow 0.6s;
+}
+
+.form-input:focus{
+  outline: none;
+  border-color: #4A90E2;
+  box-shadow: 0 0 0 0.125rem rgba(74, 144, 226, 0.1)
+}
+
+.textarea{
+  min-height: 6.25rem;
+  resize: vertical;
+}
+/* Button Styles */
+.btn{
+  padding: 0.625rem 1.25rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.4s;
+}
+
+.btn-primary{
+  background: #6C757D;
+  color: #FFFFFF;
+  margin-top: 0.625rem;
+}
+
+.btn-primary:hover{
+  background: #5A6268;
+}
+
+.btn-secondary{
+  background: #4A90E2;
+  color: #FFFFFF;
+  width: 100%;
+}
+
+.btn-secondary:hover{
+  background: #357ABD;
+}
+/* Project card Styles */
+.project-card{
+  border: 0.063rem;
+  border-radius: 0.25rem;
+  padding: 0.938rem 0.938rem 0 0;
+  margin-bottom: 0.938rem;
+}
+
+.project-card .form-input{
+  margin-bottom: 0.625rem;
+}
+/* Responsive Design */
+@media (max-width: 768px){
+  .profile-container{
+    padding: 0.625rem;
+  }
+
+  .personal-grid{
+    grid-template-columns: 1fr;
+  }
 }
 /* #root {
   max-width: 1280px;

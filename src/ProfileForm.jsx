@@ -1,4 +1,4 @@
-// import { useState } from 'react'
+
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './ProfileForm.css'
@@ -34,7 +34,7 @@ import { User, Upload, Mail, Phone, Book, Code, Briefcase} from 'lucide-react';
       });
 
       //Able to edit the form.
-      const [isEditing, setIsEditing] = useState(true);
+      // const [isEditing, setIsEditing] = useState(true);
 
       //handling the personal information taken from the input field
       const handlePersonalInfoChange = (e) =>
@@ -124,6 +124,7 @@ import { User, Upload, Mail, Phone, Book, Code, Briefcase} from 'lucide-react';
           <h1 className='profile-title'>Profile Creation</h1>
 
           <form className='profile-form' onSubmit={handleSubmit}>
+
             {/*Personal Information Section*/}
             <div className='card'>
               <div className='card-header'>
@@ -190,6 +191,7 @@ import { User, Upload, Mail, Phone, Book, Code, Briefcase} from 'lucide-react';
               <div className='card-content'>
                 {profile.skills.map((skill, index) => (
                 <div className='skill-input-field' key={index}>
+                  {/*Skills input*/}
                   <input 
                   type='text'
                   value={skill}
@@ -198,8 +200,8 @@ import { User, Upload, Mail, Phone, Book, Code, Briefcase} from 'lucide-react';
                   className='form-input skill-input'
                     />
                 </div>
-                  ))}
-                {isEditing && (
+                ))}
+                {/*Adding skills button*/}
                   <button
                   type='button'
                   onClick={addSkill}
@@ -207,10 +209,66 @@ import { User, Upload, Mail, Phone, Book, Code, Briefcase} from 'lucide-react';
                   >
                     Add Skill
                   </button>
-                )}
               </div>
             </div>
+
             {/*Projects Section */}
+            <div className='card'>
+                <div className='card-header'>
+                  <Briefcase size={20} />
+                  <h2>Projects</h2>
+                </div>
+
+                <div className='card-content'>
+                  {profile.projects.map((project, index) =>(
+                    <div className='project-card' key={index}>
+                      {/*Project title input*/}
+                      <input 
+                      type='text'
+                      value={project.title}
+                      onChange={(e) => handleProjectChange(index, 'title', e.target.value)}
+                      placeholder='Enter Project Title'
+                      className='form-input'
+                        />
+                      {/*Project description input*/}
+                      <textarea
+                      name='description'
+                      value={project.description}
+                      onChange={(e) => handleProjectChange(index, 'description', e.target.value)}
+                      placeholder='Enter Your Project Description'
+                      className='form-input textarea'
+                        />
+                      {/*Project technologies input*/}
+                      <input
+                      type='text'
+                      value={project.technologies}
+                      onChange={(e) => handleProjectChange(index, 'technologies', e.target.value)}
+                      placeholder='Enter Technologies Used'
+                      className='form-input'
+                        />
+                      {/*Url link to your Project input*/}
+                      <input
+                      type='url'
+                      value={project.link}
+                      onChange={(e) => handleProjectChange(index, 'link', e.target.value)}
+                      placeholder='Enter Project URL'
+                      className='form-input'
+                        />
+                    </div>
+                  ))}
+                  <button
+                  type='button'
+                  onClick={addProject}
+                  className='btn btn-primary'
+                  >
+                    Add Project
+                  </button>
+                </div>
+            </div>
+
+            <button className='btn btn-secondary' type='submit'>
+              Save Profile
+            </button>
           </form>
         </div>
       );
