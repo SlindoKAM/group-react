@@ -17,8 +17,11 @@ import { User, Upload, Mail, Phone, Book, Code, Briefcase} from 'lucide-react';
           fullName: '',
           email: '',
           phone: '',
-          about: ''
+          about: '',
+          profilePicture: null
         },
+        //For image preview
+        profilePictureUrl: '',
         //Array for the skills
         skills: [''],
         //Array for the user's projects
@@ -33,7 +36,7 @@ import { User, Upload, Mail, Phone, Book, Code, Briefcase} from 'lucide-react';
         // cvUrl: '',
       });
 
-      //Able to edit the form.
+      //Able to edit the form.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Dont forget about removing the edit
       // const [isEditing, setIsEditing] = useState(true);
 
       //handling the personal information taken from the input field
@@ -52,6 +55,28 @@ import { User, Upload, Mail, Phone, Book, Code, Briefcase} from 'lucide-react';
             }
           }));
       };
+
+      //adding a picture
+      const addPic = (e) =>
+      {
+        const imgFile = e.target.files[0];
+        //Update the profile pic in state
+        if(imgFile)
+        {
+          setProfile(prev =>(
+            {
+              ...prev,
+              personalInfo:
+              {
+                ...prev.personalInfo,
+                profilePicture: imgFile
+              },
+              profilePictureUrl: URL.createObjectURL(imgFile)
+            }));
+        }
+      }
+
+      //Function to remove the profile picture!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
       //handling the skills being entered by the project owner
       const handleSkillChange = (index, value) =>
@@ -178,6 +203,24 @@ import { User, Upload, Mail, Phone, Book, Code, Briefcase} from 'lucide-react';
                   className='form-input textarea'
                     />
                 </div>
+                {/* Add Profile Picture Section
+                <div className='profile-picture'>
+                  <div className='prof-pic-container'>
+                    {profile.profilePictureUrl ? (
+                      <div className='prof-pic-wrap'>
+                        
+                      </div>
+                    )}
+                  </div>
+                </div> */}
+                {/*Adding a picture button*/}
+                <button
+                type='button'
+                onClick={addPic}
+                className='btn btn-primary'
+                >
+                  Add Picture
+                </button>
               </div>
             </div>
 
@@ -202,13 +245,13 @@ import { User, Upload, Mail, Phone, Book, Code, Briefcase} from 'lucide-react';
                 </div>
                 ))}
                 {/*Adding skills button*/}
-                  <button
-                  type='button'
-                  onClick={addSkill}
-                  className='btn btn-primary'
-                  >
-                    Add Skill
-                  </button>
+                <button
+                type='button'
+                onClick={addSkill}
+                className='btn btn-primary'
+                >
+                  Add Skill
+                </button>
               </div>
             </div>
 
@@ -256,6 +299,7 @@ import { User, Upload, Mail, Phone, Book, Code, Briefcase} from 'lucide-react';
                         />
                     </div>
                   ))}
+                  {/*Adding project button*/}
                   <button
                   type='button'
                   onClick={addProject}
