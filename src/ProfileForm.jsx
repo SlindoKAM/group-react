@@ -170,6 +170,42 @@ import { User, Upload, Mail, Phone, Book, Code, Briefcase} from 'lucide-react';
                 <h2>Personal Information</h2>
               </div>
 
+              {/* Add Profile Picture Section */}
+              <div className='profile-picture'>
+                  <div className='prof-pic-container'>
+                    {profile.profilePictureUrl ? (
+                      <div className='prof-pic-wrap'>
+                        <img 
+                        src={profile.profilePictureUrl} 
+                        alt='Profile Image'
+                        className='profile-image'
+                        />
+                        <button
+                        type='button'
+                        className='btn-remove-image'
+                        onClick={removePic}
+                        >
+                          Remove Pic
+                        </button>
+                      </div>
+                    ):(
+                      <div className='prof-pic-holder'>
+                        <User size={40} />
+                        <input
+                        type='file'
+                        accept='image/*'
+                        onChange={addPic}
+                        className='prof-pic-input'
+                        id='prof-pic-input'
+                          />
+                        <label className='add-pic-label' htmlFor='prof-pic-input'>
+                          Upload Photo
+                        </label>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                
               <div className='card-content'>
                 <div className='personal-grid'>
                   {/*Full name input*/}
@@ -215,41 +251,6 @@ import { User, Upload, Mail, Phone, Book, Code, Briefcase} from 'lucide-react';
                   onChange={handlePersonalInfoChange}
                   className='form-input textarea'
                     />
-                </div>
-                {/* Add Profile Picture Section */}
-                <div className='profile-picture'>
-                  <div className='prof-pic-container'>
-                    {profile.profilePictureUrl ? (
-                      <div className='prof-pic-wrap'>
-                        <img 
-                        src={profile.profilePictureUrl} 
-                        alt='Profile Image'
-                        className='profile-image'
-                        />
-                        <button
-                        type='button'
-                        className='btn-remove-image'
-                        onClick={removePic}
-                        >
-                          Remove Pic
-                        </button>
-                      </div>
-                    ):(
-                      <div className='prof-pic-holder'>
-                        <User size={40} />
-                        <input
-                        type='file'
-                        accept='image/*'
-                        onChange={addPic}
-                        className='prof-pic-input'
-                        id='prof-pic-input'
-                          />
-                        <label className='add-pic-label' htmlFor='prof-pic-input'>
-                          Upload Photo
-                        </label>
-                      </div>
-                    )}
-                  </div>
                 </div>
                 {/*Adding a picture button*/}
                 {/* <button
