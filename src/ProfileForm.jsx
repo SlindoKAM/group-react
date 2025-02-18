@@ -74,9 +74,22 @@ import { User, Upload, Mail, Phone, Book, Code, Briefcase} from 'lucide-react';
               profilePictureUrl: URL.createObjectURL(imgFile)
             }));
         }
-      }
+      };
 
-      //Function to remove the profile picture!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      //Function to remove the profile picture
+      const removePic = () =>
+      {
+        setProfile(prev => (
+          {
+            ...prev,
+            personalInfo:
+            {
+              ...prev.personalInfo,
+              profilePicture: null
+            },
+            profilePictureUrl: ''
+          }));
+      };
 
       //handling the skills being entered by the project owner
       const handleSkillChange = (index, value) =>
@@ -203,24 +216,49 @@ import { User, Upload, Mail, Phone, Book, Code, Briefcase} from 'lucide-react';
                   className='form-input textarea'
                     />
                 </div>
-                {/* Add Profile Picture Section
+                {/* Add Profile Picture Section */}
                 <div className='profile-picture'>
                   <div className='prof-pic-container'>
                     {profile.profilePictureUrl ? (
                       <div className='prof-pic-wrap'>
-                        
+                        <img 
+                        src={profile.profilePictureUrl} 
+                        alt='Profile Image'
+                        className='profile-image'
+                        />
+                        <button
+                        type='button'
+                        className='btn-remove-image'
+                        onClick={removePic}
+                        >
+                          Remove Pic
+                        </button>
+                      </div>
+                    ):(
+                      <div className='prof-pic-holder'>
+                        <User size={40} />
+                        <input
+                        type='file'
+                        accept='image/*'
+                        onChange={addPic}
+                        className='prof-pic-input'
+                        id='prof-pic-input'
+                          />
+                        <label className='add-pic-label' htmlFor='prof-pic-input'>
+                          Upload Photo
+                        </label>
                       </div>
                     )}
                   </div>
-                </div> */}
+                </div>
                 {/*Adding a picture button*/}
-                <button
+                {/* <button
                 type='button'
                 onClick={addPic}
                 className='btn btn-primary'
                 >
                   Add Picture
-                </button>
+                </button> */}
               </div>
             </div>
 
